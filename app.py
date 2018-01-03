@@ -13,7 +13,6 @@ def fp():
     #
     # json = request.get_json()
     # print json
-    print request.data
     obj = json.loads(request.data)
     print obj
 

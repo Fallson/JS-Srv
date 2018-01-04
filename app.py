@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from flask import json
+import base64
 
 app = Flask(__name__)
 
@@ -16,7 +17,9 @@ def fp():
     obj = json.loads(request.data)
     print obj
 
-    obj[u"gender"] = u"male"
+    for key in obj:
+        obj[key] = base64.b64decode(obj[key])
+
     print obj
     return jsonify(obj)
 

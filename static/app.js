@@ -1935,6 +1935,10 @@
       },
       encodedTrack: function() {
         return this.encode(this._trackArray)
+      },
+      extractResult: function(){
+        var result = this._trackArray;
+        return result.join("|");
       }
     }
 
@@ -2002,12 +2006,10 @@
         init:function(){
         },
         ajax: function (url, success, error) {
-          var d = this.tracker.encodedDiff()
-          var e = this.tracker.encodedTrack()
+          var e = this.tracker.extractResult()
           var f = this.clickTracker.extractResult()
           this.fingerprint.get(function(result, components) {
             var data = {
-              trackerdiff: base64.encode(d),
               tracker: base64.encode(e),
               clicktracker: base64.encode(f),
               fingerprint: base64.encode(result),

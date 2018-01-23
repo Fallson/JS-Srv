@@ -4,6 +4,8 @@ import base64
 import datetime
 from pymongo import MongoClient
 from pymongo.errors import DuplicateKeyError
+from keras.models import Sequential
+from keras.layers import Dense
 
 app = Flask(__name__)
 boDebug = True
@@ -40,7 +42,7 @@ def disconnectMongoDB():
         mongo_client = None
 
 def clickAndTrackerValidate(clicktracker, tracker):
-
+    model = Sequential()
     return True
 
 def fingerprintSuccessCache(fingerprint):

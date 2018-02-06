@@ -1,20 +1,20 @@
 <html>
 <head>
-  <title>Fingerprintjs2 test</title>
+  <title>Fingerprint test</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
   <div id="container"></div>
 
 
-  <h1>Fingerprintjs2</h1>
+  <h1>Fingerprint</h1>
 
   <p>Your browser fingerprint: <strong id="fp"></strong></p>
   <p><code id="time"/></p>
   <p><span id="details"/></p>
   <button type="button" id="btn">Get my fingerprint</button>
 
-  <p><span id="ajax_res"/>Your ajax response:</p>
+  <p><span id="ajax_res"/>Fingerprint and mouse movement ajax response:</p>
   <button type="button" id="btn2">AJAX</button>
 
   <script src="fingerprint2.js"></script>
@@ -47,14 +47,18 @@
 
     document.querySelector("#btn2").addEventListener("click", function () {
       var success = function(msg){
-        document.querySelector("#ajax_res").innerHTML = msg;
+        var details = "<strong>Validation information: </strong><br />";
+        details += "fingerprint validation: " + msg["f_result"] + "<br />";
+        details += "movement validation: " + msg["t_result"] + "<br />";
+
+        document.querySelector("#ajax_res").innerHTML = details;
       }
       var error = function(msg){
         document.querySelector("#ajax_res").innerHTML = "error: " + msg;
       }
       
       var ttt = new Captcha();
-      ttt.ajax("http://localhost:5000/fp", success, error);
+      ttt.ajax("http://10.88.1.3:5000/fp", success, error);
     });
   </script>
 </body>

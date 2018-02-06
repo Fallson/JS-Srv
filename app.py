@@ -108,5 +108,5 @@ def fp():
 
 if __name__ == '__main__':
     if connectMongoDB('10.88.2.228', '', '', '3DTestDB'):
-        app.run()
+        app.run(host='0.0.0.0')
 
